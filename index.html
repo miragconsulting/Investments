@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Инвестиционный проект в Кочне — Премиум недвижимость в Словении</title>
+    <meta name="viewport" content="width=1200, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <style>
+        html {font-size: 17px;}
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg,#e6f0fa 0%,#bde2ff 60%,#eaf7f1 100%);
+            color: #24324a;
+            margin: 0;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        .parallax-bg {
+          background-image: url('https://sunsetobsession.b-cdn.net/wp-content/uploads/2022/04/Lake-Bled-Panorama-Cropped.jpg');
+          background-size: cover;
+          background-attachment: fixed;
+          background-position: center center;
+        }
+        .fadein {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s, transform 1s;
+            transition-delay: .1s;
+        }
+        .fadein.visible {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+        ::-webkit-scrollbar { display: none; }
+        .no-scrollbar { scrollbar-width: none; }
+        .invest-input { border: 1px solid #53a6e6; border-radius: 0.375rem; padding:0.375rem 0.75rem; outline: none;}
+        .invest-input:focus { border-color:#318cce; }
+        .section {padding-top: 3rem; padding-bottom: 3rem;}
+        .icon-circle {
+          background: linear-gradient(135deg, #5bc0eb 0%, #77dd77 100%);
+          color: #fff;
+          border-radius: 50%;
+          display: flex;
+          align-items: center; justify-content: center;
+          width:3rem; height:3rem;
+          box-shadow: 0 8px 24px rgba(38,188,213,0.16);
+          font-size:1.5rem;
+        }
+        a {color:#3886b9;}
+        a:hover {color:#26648e;}
+        .animate-bounce-slow {
+            animation: bounceSlow 2.6s infinite;
+        }
+        @keyframes bounceSlow {
+          0%,100%{transform:translateY(0);}
+          50%{transform:translateY(-16px);}
+        }
+        .animate-pulse {
+          animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite;
+        }
+        @keyframes pulse {
+          0%,100%{opacity:1;}
+          50%{opacity:.4;}
+        }
+        .zoom-in {
+          animation: zoomin 1.3s cubic-bezier(.4,0,.2,1);
+        }
+        @keyframes zoomin { 0% {transform: scale(.8); opacity:.35;} 100%{transform:scale(1);opacity:1;} }
+        .shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .shine::after {
+            content: "";
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(120deg,rgba(255,255,255,0) 25%,rgba(255,255,255,.2) 40%,rgba(255,255,255,0) 65%);
+            transform: rotate(25deg);
+            animation: shine 2.2s infinite linear;
+        }
+        @keyframes shine { 0%{left:-60%;} 100%{left:100%;} }
+        .marker-custom {
+          width: 36px;
+          height: 36px;
+          border-radius: 18px;
+          background: #43c6fc;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          font-size: 1.35rem;
+          border: 2.5px solid #fff;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.20);
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="w-full parallax-bg bg-no-repeat bg-cover bg-center relative flex flex-col items-center justify-center h-110 shadow-xl" style="min-height:500px;">
+        <div class="flex flex-col items-center justify-center text-center bg-white bg-opacity-70 py-10 px-8 rounded-xl shadow-2xl mx-4 mt-24 fadein" style="backdrop-filter: blur(4px);">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-900 shine">Премиальный инвестиционный проект в Кочне, <span class="text-green-600">Словения</span></h1>
+            <p class="mt-5 text-xl text-gray-700">Уникальный участок 348 м² — уже получено разрешение на строительство. В сердце природы и туризма!</p>
+        </div>
+        <div class="absolute left-12 top-10 animate-bounce-slow hidden md:block"><i class="fas fa-leaf text-green-500 text-3xl"></i></div>
+        <div class="absolute right-12 bottom-10 animate-pulse hidden md:block"><i class="fas fa-mountain text-blue-400 text-4xl"></i></div>
+    </section>
+
+    <!-- Фотографии участка -->
+    <section class="section fadein">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold mb-5 text-blue-700 text-center">Участок: Ваш фундамент для успеха</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+                <img src="https://https://github.com/miragconsulting/Images/blob/main/16783487_2025-04-26_10-31-29.jpg" alt="Фото участка Кочна, Словения" class="rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-2xl duration-300 zoom-in">
+                <img src="https://github.com/miragconsulting/Images/blob/main/16783489_2025-04-26_10-31-51.jpg" alt="Вид участка сверху" class="rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-2xl duration-300 zoom-in">
+                <img src="https://github.com/miragconsulting/Images/blob/main/16783490_2025-04-26_10-31-11.jpg" alt="Участок и вид на дом" class="rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-2xl duration-300 zoom-in">
+            </div>
+            <div class="mt-6 flex flex-wrap justify-center gap-8 text-lg text-gray-600">
+                <span class="icon-circle"><i class="fas fa-file-signature"></i></span>
+                <span>Площадь: <b>348 м²</b></span>
+                <span>Категория: Строительный участок</span>
+                <span>Разрешение на строительство: <b class="text-green-600">получено</b></span>
+                <span><i class="fas fa-euro-sign text-indigo-400"></i> Цена: <b>160 000 €</b></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Достопримечательности -->
+    <section class="section bg-gradient-to-b from-blue-50 to-green-50 fadein">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-7 text-center text-green-700">Туристические жемчужины радиусом до 20 км</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="rounded-2xl shadow-xl hover:shadow-2xl transition duration-400 bg-white flex flex-col">
+                  <img src="https://sunsetobsession.b-cdn.net/wp-content/uploads/2022/04/Lake-Bled-Panorama-Cropped.jpg" alt="Озеро Блед" class="rounded-2xl h-60 object-cover">
+                  <div class="p-5">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Озеро Блед — 8 км</h3>
+                    <p class="text-gray-700">Визитная карточка Словении, окружённое Альпами, идеально подходит для романтических прогулок, экскурсий к острову и замку, а также активного отдыха (плавание, каякинг, катание на велосипеде).</p>
+                  </div>
+                </div>
+                <div class="rounded-2xl shadow-xl hover:shadow-2xl transition duration-400 bg-white flex flex-col">
+                  <img src="https://lp-cms-production.imgix.net/2019-06/b94ab4c2c4f40e837dc598b708556e57-vintgar-gorge.jpg" alt="Ущелье Винтгар" class="rounded-2xl h-60 object-cover">
+                  <div class="p-5">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Ущелье Винтгар — 6 км</h3>
+                    <p class="text-gray-700">Грандиозное ущелье длиной 1.6 км с деревянными тропами и водопадами. Входит в ТОП природных чудес Словении, обязательное место для фото и хайкинга.</p>
+                  </div>
+                </div>
+                <div class="rounded-2xl shadow-xl hover:shadow-2xl transition duration-400 bg-white flex flex-col">
+                  <img src="https://www.wanderlustmagazine.com/wp-content/uploads/2023/11/hr-hny838_1500.jpg" alt="Юлианские Альпы" class="rounded-2xl h-60 object-cover">
+                  <div class="p-5">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Юлианские Альпы</h3>
+                    <p class="text-gray-700">Окружают регион, предлагают лучшие в стране маршруты для треккинга, скалолазания, горнолыжного спорта и потрясающие виды на национальные парки.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-lg text-gray-700 font-medium">
+              <span class="icon-circle mx-2"><i class="fa fa-train"></i></span>
+              <span>Быстрый доступ: автомагистраль — 4 минуты, Блед — 10 минут, Любляна — 52 минуты, аэропорт — 35 минут.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Инвестиционная информация (апдейт: 2025, анимация) -->
+    <section class="section fadein" id="invest-block">
+        <div class="max-w-5xl mx-auto relative">
+            <h2 class="text-3xl font-bold text-blue-900 mb-7 text-center">
+              <span class="shine">Инвестиционный потенциал и расчёты (2025)</span></h2>
+            <div class="md:grid md:grid-cols-2 gap-10 mb-7">
+                <div class="mb-8 md:mb-0">
+                  <h3 class="font-semibold text-xl text-green-700 mb-2 flex items-center">
+                    <i class="fa fa-hand-holding-dollar mr-2 text-green-500 animate-bounce-slow"></i>
+                    Затраты на строительство:
+                  </h3>
+                  <ul class="text-gray-700 pl-5 list-disc space-y-1">
+                    <li>Покупка участка: <b>160 000 €</b></li>
+                    <li>Коммунальные платежи (оплачены): <b>0 €</b></li>
+                    <li>Строительство 3 апартаментов <br><span class="text-xs text-gray-500">(2+1 планировки, общая ~350 м² с учетом террас, хозблоков):</span> <b>280 000 €</b>
+                      <div class="text-xs text-blue-600">
+                        (2025: строительно-монтажные работы 820 €/м², внутренняя отделка – 70 000 €)
+                      </div>
+                    </li>
+                    <li>Мебель и техника ("под ключ"): <b>35 000 €</b></li>
+                    <li>Документы, ввод в эксплуатацию, нотариус: <b>10 000 €</b></li>
+                  </ul>
+                  <div class="mt-2 text-xl text-blue-900 font-bold animate-pulse">Суммарные инвестиции: <span class="text-green-600">485 000 €</span></div>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-xl text-green-700 mb-2 flex items-center">
+                    <i class="fa fa-euro-sign mr-2 text-blue-500 animate-pulse"></i>
+                    Доход и окупаемость (2025):
+                  </h3>
+                  <ul class="text-gray-700 pl-5 list-disc space-y-1">
+                    <li>Аренда за 1 номер: <b>130–145 €/ночь</b></li>
+                    <li>Среднегодовая заполняемость: <b>≈ 185 ночей</b></li>
+                    <li>Годовая выручка (3 апарт.): <b>до 80 000 €</b></li>
+                    <li>Расходы (налоги 15%, обслуживание, реклама): <b>≈ 13 000 €</b></li>
+                  </ul>
+                  <div class="mt-2 text-lg text-blue-900 font-semibold">
+                    <span class="shine">Чистая доходность : <b>>10.8% в год</b></span>
+                  </div>
+                  <div class="flex flex-wrap mt-3 gap-2">
+                    <span class="bg-green-100 text-green-800 py-1 px-3 rounded-lg text-sm"><i class="fa-solid fa-certificate"></i> Все разрешения: <b>2025</b></span>
+                    <span class="bg-blue-100 text-blue-800 py-1 px-3 rounded-lg text-sm">Риск ожидания — <i class="fa-solid fa-times text-red-500"></i> </span>
+                  </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 mt-10">
+                <div class="zoom-in">
+                    <div id="echart-roi" style="width:100%;height:260px"></div>
+                </div>
+                <div class="zoom-in">
+                    <div id="echart-growth" style="width:100%;height:260px"></div>
+                </div>
+            </div>
+            <div class="text-center mt-8 flex flex-wrap items-center justify-center gap-4">
+              <span class="icon-circle"><i class="fa fa-arrow-trend-up"></i></span>
+              <span class="text-blue-700 font-semibold text-lg">Окупаемость (Payback): <b>менее 9.5 лет</b></span>
+              <span class="icon-circle"><i class="fa fa-piggy-bank"></i></span>
+              <span class="text-green-700 font-semibold text-lg">Рост стоимости: <b>+7% в год</b> (2020–2025)</span>
+            </div>
+            <div class="mt-3 text-center text-gray-600 text-base animate__fadeInUp">
+              <i class="fa fa-info-circle text-blue-600"></i>
+              Все числа основаны на <b>данных рынка Словении за 2024–2025 годы</b>, статистике порталов Booking и Airbnb, открытых реестрах недвижимости и официальной инфляции (<b>источник:</b> globalpropertyguide.com, stat.si).
+            </div>
+        </div>
+    </section>
+
+    <!-- Интерактивный калькулятор -->
+    <section class="section bg-gradient-to-t from-green-50 to-blue-50 fadein">
+      <div class="max-w-3xl mx-auto rounded-3xl shadow-2xl p-8 md:p-10 bg-white">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-3 text-blue-900">Интерактивный инвестиционный калькулятор</h2>
+        <p class="text-gray-700 text-center mb-6">Проверьте окупаемость при различных сценариях аренды!</p>
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="block mb-1 text-sm text-gray-700 font-bold" for="pricePerNight">Цена за ночь, €</label>
+            <input class="invest-input w-full" id="pricePerNight" type="number" min="30" max="300" value="135">
+          </div>
+          <div>
+            <label class="block mb-1 text-sm text-gray-700 font-bold" for="nightsYear">Кол-во ночей аренды/год</label>
+            <input class="invest-input w-full" id="nightsYear" type="number" min="0" max="365" value="185">
+          </div>
+        </div>
+        <div class="text-gray-600 mb-4">* Учет: 3 апартамента, налог 15%, обслуживание 5000 €/год</div>
+        <div id="calcResults" class="bg-blue-50 px-5 py-2 rounded-lg text-base text-blue-800 font-bold text-center transition-all duration-300"></div>
+      </div>
+    </section>
+
+    <!-- ВНЖ по инвестициям -->
+    <section class="section fadein">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl text-green-900 font-bold text-center mb-5">ВНЖ и ПМЖ для инвесторов</h2>
+        <ul class="list-disc pl-7 text-lg text-gray-700 mb-4">
+            <li>Недвижимость в собственности дает возможность оформить ВНЖ как предпринимателю через регистрацию компании и развитие туристического бизнеса</li>
+            <li>Минимальные инвестиции — от <b>50 000 €</b> в компанию; постоянный доход от бизнеса ускоряет процесс получения ВНЖ</li>
+            <li>Через 5 лет легального проживания — право на ПМЖ и далее гражданство ЕС</li>
+            <li>Актуальная информация: <a href="https://lawyersslovenia.com/slovenia-residency-by-investment/" class="underline" target="_blank">подробнее о ВНЖ/ПМЖ Словении</a></li>
+        </ul>
+        <div class="flex flex-wrap justify-center items-center gap-6 mt-7">
+          <span class="icon-circle"><i class="fa-solid fa-landmark"></i></span>
+          <span class="text-green-800 font-semibold">ВНЖ = Свобода перемещения по шенгену и всей ЕС</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Прогноз роста стоимости -->
+    <section class="section bg-gradient-to-b from-blue-50 to-green-50 fadein">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-blue-900 mb-7">Рост капитализации недвижимости Словении</h2>
+        <div class="md:flex items-center gap-7">
+          <div class="flex-1 mb-6 md:mb-0">
+            <ul class="text-lg text-gray-700 list-disc pl-7">
+              <li>За прошлые 5 лет средний рост цен: <b>7.2% годовых</b></li>
+              <li>Средняя цена кв. м в регионе Блед/Гореньска: <b>от 3200 €/м²</b></li>
+              <li>Гросс yield (2025): <b>~4.5% годовых</b> (по данным Global Property Guide)</li>
+              <li>Страны ЕС делают ставку на развитие туризма, спрос превышает предложение</li>
+            </ul>
+            <p class="text-blue-700 mt-3">Ваша инвестиция отвечает тренду уверенного роста в безопасной, стабильной экономике!</p>
+          </div>
+          <div class="flex-1 hidden md:block">
+            <img src="https://travelslovenia.org/wp-content/uploads/2015/02/lake-bled-panoramic-view-cropped.jpg" alt="Панорама Блед" class="shadow-xl rounded-md" style="max-height:250px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ключевое преимущество -->
+    <section class="section flex flex-col items-center bg-white fadein">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="icon-circle mx-auto mb-3"><i class="fas fa-check-circle"></i></div>
+        <h2 class="text-2xl font-bold text-green-800 mb-2">Разрешение на строительство получено!</h2>
+        <p class="text-gray-700 text-lg">
+          Уникальное предложение: купить земельный участок в живописном месте с уже одобренным разрешением для 3-х апартаментов под сдачу в аренду или личное проживание. Начните стройку и регистрацию бизнеса без ожиданий — сразу <b>готовый старт</b> для вашей инвестиции.
+        </p>
+      </div>
+    </section>
+
+    <!-- Google Map -->
+    <section class="section fadein">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-blue-900 mb-3 text-center">Карта: Земля и достопримечательности</h2>
+        <div id="map" style="width:100%;height:350px;border-radius:18px;box-shadow:0 8px 32px rgba(56,145,200,0.08);"></div>
+      </div>
+    </section>
+
+    <!-- JS Animations + Calculators -->
+    <script>
+        // Фейд-ин при прокрутке
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.fadein').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if(rect.top < window.innerHeight-100) el.classList.add('visible');
+            });
+        });
+        document.querySelectorAll('.fadein').forEach(el => {
+            if(el.getBoundingClientRect().top < window.innerHeight-100) el.classList.add('visible');
+        });
+
+        // ECharts для ROI с нелинейной зависимостью и эффектом волн
+        function renderROIChart() {
+            const chart = echarts.init(document.getElementById('echart-roi'));
+            chart.setOption({
+                title: {text:'Накопленный ROI, €', left:'center', textStyle:{fontWeight:'bold',fontSize:16,color:'#195e2d'}},
+                tooltip: { trigger:'axis'},
+                xAxis: {
+                    type: 'category',
+                    data: ['2025','2026','2027','2028','2029','2030','2031'],
+                    axisLine:{lineStyle:{color:'#34c759'}}
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {formatter:'{value} €'}
+                },
+                series: [{
+                  name:'Совокупная прибыль',
+                  type:'line',
+                  smooth: true,
+                  symbol: 'circle',
+                  symbolSize:10,
+                  data: [7000, 54000, 96000, 139000, 182000, 225000, 268000],
+                  areaStyle:{
+                      color: new echarts.graphic.LinearGradient(0,0,0,1,[
+                        {offset:0, color:'#bde2ff'},{offset:.7,color:'#83d9ae'},{offset:1,color:'#fff'}
+                      ])
+                  },
+                  lineStyle:{width:4, color:'#43c978'},
+                  itemStyle:{color:'#25b46e'}
+                }]
+            });
+        }
+        function renderGrowthChart() {
+            const chart2 = echarts.init(document.getElementById('echart-growth'));
+            chart2.setOption({
+                title: {text:'Рост цен на недвижимость, €/м²', left:'center', textStyle:{color:'#3861a2',fontWeight:'bold',fontSize:16}},
+                tooltip: { trigger:'axis'},
+                xAxis: {
+                    type:'category',
+                    data: ['2020','2021','2022','2023','2024','2025 Прогноз'],
+                    axisLine:{lineStyle:{color:'#4299e1'}}
+                },
+                yAxis: { type:'value', axisLabel:{formatter:'{value} €'} },
+                series:[{
+                   name:'€/м²',
+                   type:'bar',
+                   barWidth:34,
+                   data: [2500, 2650, 2870, 3050, 3200, 3430],
+                   itemStyle:{
+                      color: new echarts.graphic.LinearGradient(0,0,0,1,
+                        [
+                          {offset:0, color:'#4299e1'},
+                          {offset:.5, color:'#bce784'},
+                          {offset:1, color:'#4ed6c6'}
+                        ])
+                   }
+                }]
+            });
+        }
+        setTimeout(renderROIChart, 400);
+        setTimeout(renderGrowthChart, 400);
+
+        // Investment calculator logic
+        function updateInvestmentCalc(){
+            let price = parseFloat(document.getElementById('pricePerNight').value) || 0;
+            let nights = parseInt(document.getElementById('nightsYear').value) || 0;
+            let gross = price*nights*3;
+            let service = 5000;
+            let tax = 0.15;
+            let net = gross - (gross*tax) - service;
+            let roi = net/485000*100;
+            document.getElementById('calcResults').innerHTML =
+              `Годовой доход (брутто): <b>${gross.toLocaleString('ru-RU')} €</b><br>
+               Чистый доход (после налогов и обслуживания): <b>${net.toLocaleString('ru-RU', {maximumFractionDigits:0})} €</b><br>
+               Окупаемость инвестиций: <span class="text-green-600"><b>${roi.toFixed(1)}% / год</b></span>`;
+        }
+        updateInvestmentCalc();
+        document.getElementById('pricePerNight').addEventListener('input', updateInvestmentCalc);
+        document.getElementById('nightsYear').addEventListener('input', updateInvestmentCalc);
+
+        // Google Maps API
+        function initMap() {
+          const kocna = {lat: 46.4051, lng: 14.0415};
+          const bled = {lat:46.3692, lng:14.1146};
+          const vintgar = {lat:46.3892, lng:14.0844};
+          const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 11,
+            center: kocna,
+            mapTypeId: "terrain",
+            gestureHandling:"greedy",
+            clickableIcons:false,
+          });
+          new google.maps.Marker({
+            position: kocna,
+            map,
+            title: "Кочна — Ваш объект",
+            icon: { url:"https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/svgs/solid/home.svg",scaledSize:new google.maps.Size(35,35) }
+          });
+          new google.maps.Marker({
+            position: bled,
+            map,
+            title: "Озеро Блед",
+            icon: { url:"https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/svgs/solid/water.svg",scaledSize:new google.maps.Size(36,36)}
+          });
+          new google.maps.Marker({
+            position: vintgar,
+            map,
+            title: "Ущелье Винтгар",
+            icon: { url:"https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/svgs/solid/tree.svg",scaledSize:new google.maps.Size(30,30)}
+          });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVDV3tm8GLlEOMqPRGYkEje0cm4WHdUeg&callback=initMap"></script>
+</body>
+</html>
